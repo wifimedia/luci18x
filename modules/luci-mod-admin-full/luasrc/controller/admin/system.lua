@@ -12,7 +12,7 @@ function index()
 	entry({"admin", "system", "clock_status"}, post_on({ set = true }, "action_clock_status"))
 
 	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Administration"), 2)
-
+--[[
 	if fs.access("/bin/opkg") then
 		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
 		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
@@ -31,8 +31,8 @@ function index()
 	if number > 0 then
 		entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
 	end
-
-	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Backup / Flash Firmware"), 70)
+]]--
+	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Flash Firmware"), 70)
 	entry({"admin", "system", "flashops", "reset"}, post("action_reset"))
 	entry({"admin", "system", "flashops", "backup"}, post("action_backup"))
 	entry({"admin", "system", "flashops", "backupfiles"}, form("admin_system/backupfiles"))
