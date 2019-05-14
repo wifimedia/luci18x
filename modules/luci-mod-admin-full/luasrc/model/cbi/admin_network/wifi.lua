@@ -898,6 +898,7 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 end
 
 -- ieee802.11w options
+--[[
 if hwtype == "mac80211" then
 	local has_80211w = (os.execute("hostapd -v11w 2>/dev/null || hostapd -veap 2>/dev/null") == 0)
 	if has_80211w then
@@ -962,5 +963,5 @@ if hwtype == "mac80211" then
 		wps:depends("encryption", "psk-mixed")
 	end
 end
-
+]]--
 return m
