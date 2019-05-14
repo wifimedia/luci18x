@@ -61,20 +61,6 @@
 			</span>
 		</li>
 		<% end end %>
-
-		<% if not self.nocreate then %>
-		<li data-value="-"<%= ifattr(not value and self.widget ~= "checkbox", "selected", "selected") %>>
-			<em>
-				<%- if self.widget == "checkbox" then -%>
-					<%:create:%>
-				<%- else -%>
-					<%:unspecified -or- create:%>
-				<%- end -%>
-			</em>
-			<input style="display:none" type="password" />
-			<input class="create-item-input" type="text" />
-		</li>
-		<% end %>
 	</ul>
 </div>
 
