@@ -32,6 +32,7 @@ function index()
 		entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
 	end
 ]]--
+	entry({"admin", "system", "reset_all"}, cbi("admin_system/reset_all"), _("Reset Default"), 68)
 	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Flash Firmware"), 70)
 	entry({"admin", "system", "flashops", "reset"}, post("action_reset"))
 	entry({"admin", "system", "flashops", "backup"}, post("action_backup"))
@@ -363,7 +364,7 @@ function action_reset()
 		luci.template.render("admin_system/applyreboot", {
 			title = luci.i18n.translate("Erasing..."),
 			msg   = luci.i18n.translate("The system is erasing the configuration partition now and will reboot itself when finished."),
-			addr  = "192.168.1.1"
+			addr  = "172.16.99.1"
 		})
 
 		fork_exec("sleep 1; killall dropbear uhttpd; sleep 1; jffs2reset -y && reboot")
