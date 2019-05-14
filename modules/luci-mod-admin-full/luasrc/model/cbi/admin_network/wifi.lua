@@ -731,18 +731,18 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	r1_key_holder.rmempty = true
 ]]--
 	pmk_r1_push = s:taboption("encryption", Flag, "pmk_r1_push", translate("PMK R1 Push"))
-	pmk_r1_push:depends({ieee80211r="1"})
+	pmk_r1_push:depends({ieee80211r="1", ft_psk_generate_local=""})
 	pmk_r1_push.placeholder = "0"
 	pmk_r1_push.rmempty = true
 
 	r0kh = s:taboption("encryption", DynamicList, "r0kh", translate("External R0 Key Holder List"),
 		translate("List of R0KHs in the same Mobility Domain."))
-	r0kh:depends({ieee80211r="1"})
+	r0kh:depends({ieee80211r="1", ft_psk_generate_local=""})
 	r0kh.rmempty = true
 
 	r1kh = s:taboption("encryption", DynamicList, "r1kh", translate("External R1 Key Holder List"),
 		translate ("List of R1KHs in the same Mobility Domain."))
-	r1kh:depends({ieee80211r="1"})
+	r1kh:depends({ieee80211r="1", ft_psk_generate_local=""})
 	r1kh.rmempty = true
 	-- End of 802.11r options
 

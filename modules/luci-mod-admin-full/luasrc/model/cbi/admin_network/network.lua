@@ -56,16 +56,16 @@ local tpl_networks = tpl.Template(nil, [[
 							<input type="button" class="cbi-button cbi-button-action important" onclick="location.href='<%=url("admin/network/network", net[1])%>'" title="<%:Edit this interface%>" value="<%:Edit%>" id="<%=net[1]%>-ifc-edit"<%=ifattr(dynamic, "disabled", "disabled")%> />
 
 							<input type="hidden" name="cbid.network.<%=net[1]%>.__delete__" value="" />
-							<input type="submit" name="cbi.apply" class="cbi-button cbi-button-negative" onclick="iface_delete(event)" value="<%:Delete%>"<%=ifattr(dynamic, "disabled", "disabled")%> />
+							<!--input type="submit" name="cbi.apply" class="cbi-button cbi-button-negative" onclick="iface_delete(event)" value="<%:Delete%>"<%=ifattr(dynamic, "disabled", "disabled")%> /-->
 						</div>
 					</div>
 				</div>
 			<% end %>
 		</div>
 	</div>
-	<div class="cbi-section-create">
+	<!--div class="cbi-section-create">
 		<input type="button" class="cbi-button cbi-button-add" value="<%:Add new interface...%>" onclick="location.href='<%=url("admin/network/iface_add")%>'" />
-	</div>
+	</div-->
 ]])
 
 local _, net
@@ -143,7 +143,7 @@ end
 
 
 m:section(SimpleSection).template = "admin_network/iface_overview_status"
-
+--[[
 if fs.access("/etc/init.d/dsl_control") then
 	local ok, boarddata = pcall(json.parse, fs.readfile("/etc/board.json"))
 	local modemtype = (ok == true)
@@ -260,6 +260,6 @@ if network:has_ipv6() then
 	o.rmempty = true
 	m.pageaction = true
 end
-
+]]--
 
 return m
