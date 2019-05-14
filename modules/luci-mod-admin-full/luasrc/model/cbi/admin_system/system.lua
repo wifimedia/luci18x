@@ -105,45 +105,30 @@ o:value(8, translate("Normal"))
 o:value(9, translate("Warning"))
 
 
---
--- Langauge & Style
---
-
-o = s:taboption("language", ListValue, "_lang", translate("Language"))
-o:value("auto")
-
-local i18ndir = luci.i18n.i18ndir .. "base."
-for k, v in luci.util.kspairs(conf.languages) do
-	local file = i18ndir .. k:gsub("_", "-")
-	if k:sub(1, 1) ~= "." and fs.access(file .. ".lmo") then
-		o:value(k, v)
-	end
-end
-
-function o.cfgvalue(...)
-	return m.uci:get("luci", "main", "lang")
-end
-
-function o.write(self, section, value)
-	m.uci:set("luci", "main", "lang", value)
+---
+---Watchdog Timer
+---
+s1 = m:section(TypedSection, "watchcat", translate("Watchdog Timer"))
+s1.anonymous = true
+s1.addremove = false
+s1:tab("watchdog",  translate("Watchdog Timer"))
+wcht = s1:taboption( "watchdog",ListValue, "period", "Period","Default  30s")
+wcht.default = "30"
+local period = 1
+while (period < 121) do
+	wcht :value(period , period .. " ")
+	period = period + 1
 end
 
 
-o = s:taboption("language", ListValue, "_mediaurlbase", translate("Design"))
-for k, v in pairs(conf.themes) do
-	if k:sub(1, 1) ~= "." then
-		o:value(v, k)
-	end
+fdl = s1:taboption("watchdog", ListValue, "forcedelay", "Forcedelay","Default  30s")
+fdl.default = "10"
+local forcedelay = 1
+while (forcedelay < 61) do
+	fdl:value(forcedelay, forcedelay .. " ")
+	forcedelay = forcedelay + 1
 end
-
-function o.cfgvalue(...)
-	return m.uci:get("luci", "main", "mediaurlbase")
-end
-
-function o.write(self, section, value)
-	m.uci:set("luci", "main", "mediaurlbase", value)
-end
-
+hname = s1:taboption("watchdog", Value, "pinghosts", "Hostname")
 
 --
 -- NTP
