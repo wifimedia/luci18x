@@ -213,7 +213,7 @@ if hwtype == "mac80211" then
 				%{ p.display_dbm, p.display_mw })
 		end
 	end
---[[
+
 	local cl = iw and iw.countrylist
 	if cl and #cl > 0 then
 		cc = s:taboption("advanced", ListValue, "country", translate("Country Code"), translate("Use ISO/IEC 3166 alpha2 country codes."))
@@ -224,7 +224,7 @@ if hwtype == "mac80211" then
 	else
 		s:taboption("advanced", Value, "country", translate("Country Code"), translate("Use ISO/IEC 3166 alpha2 country codes."))
 	end
-]]--
+
 	legacyrates = s:taboption("advanced", Flag, "legacy_rates", translate("Allow legacy 802.11b rates"))
 	legacyrates.rmempty = false
 	legacyrates.default = "1"
@@ -297,7 +297,7 @@ ssid:depends({mode="monitor"})
 ssid:depends({mode="ap-wds"})
 ssid:depends({mode="sta-wds"})
 ssid:depends({mode="wds"})
-
+limit = s:taboption("general", Value, "maxassoc", translate("Connection Limit"))
 bssid = s:taboption("general", Value, "bssid", translate("<abbr title=\"Basic Service Set Identifier\">BSSID</abbr>"))
 
 network = s:taboption("general", Value, "network", translate("Network"),
