@@ -297,7 +297,7 @@ ssid:depends({mode="monitor"})
 ssid:depends({mode="ap-wds"})
 ssid:depends({mode="sta-wds"})
 ssid:depends({mode="wds"})
-
+limit = s:taboption("general", Value, "maxassoc", translate("Connection Limit"))
 bssid = s:taboption("general", Value, "bssid", translate("<abbr title=\"Basic Service Set Identifier\">BSSID</abbr>"))
 
 network = s:taboption("general", Value, "network", translate("Network"),
