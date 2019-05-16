@@ -297,12 +297,11 @@ ssid:depends({mode="monitor"})
 ssid:depends({mode="ap-wds"})
 ssid:depends({mode="sta-wds"})
 ssid:depends({mode="wds"})
-
+limit = s:taboption("general", Value, "maxassoc", translate("Connection Limit"))
 bssid = s:taboption("general", Value, "bssid", translate("<abbr title=\"Basic Service Set Identifier\">BSSID</abbr>"))
 
 network = s:taboption("general", Value, "network", translate("Network"),
-	translate("Choose the network(s) you want to attach to this wireless interface or " ..
-		"fill out the <em>create</em> field to define a new network."))
+	translate("Choose the network(s) you want to attach to this wireless interface"))
 
 network.rmempty = true
 network.template = "cbi/network_netlist"
