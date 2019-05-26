@@ -299,7 +299,7 @@ ssid:depends({mode="sta-wds"})
 ssid:depends({mode="wds"})
 limit = s:taboption("general", Value, "maxassoc", translate("Connection Limit"))
 bssid = s:taboption("general", Value, "bssid", translate("<abbr title=\"Basic Service Set Identifier\">BSSID</abbr>"))
-
+macaddr = s:taboption("general", Value, "macaddr", translate("<abbr title=\"Basic Service Set Identifier\">MAC ADDR</abbr>"))
 network = s:taboption("general", Value, "network", translate("Network"),
 	translate("Choose the network(s) you want to attach to this wireless interface"))
 
