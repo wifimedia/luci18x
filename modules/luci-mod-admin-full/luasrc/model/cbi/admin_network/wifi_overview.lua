@@ -31,6 +31,7 @@ function guess_wifi_hw(dev)
 	end
 
 	-- wl.o
+	--[[
 	if name == "wl" then
 		local name = translatef("Broadcom 802.11%s Wireless Controller", bands)
 		local nm   = 0
@@ -60,8 +61,9 @@ function guess_wifi_hw(dev)
 
 	-- dunno yet
 	else
+	]]--
 		return translatef("Generic 802.11%s Wireless Controller", bands)
-	end
+	--end
 end
 
 local tpl_radio = tpl.Template(nil, [[

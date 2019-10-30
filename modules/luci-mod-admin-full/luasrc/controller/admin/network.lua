@@ -109,7 +109,7 @@ function index()
 				end)
 		end
 
-
+--[[
 		if nixio.fs.access("/etc/config/dhcp") then
 			page = node("admin", "network", "dhcp")
 			page.target = cbi("admin_network/dhcp")
@@ -124,7 +124,7 @@ function index()
 			page.title  = _("Hostnames")
 			page.order  = 40
 		end
-
+]]--
 		page  = node("admin", "network", "routes")
 		page.target = cbi("admin_network/routes")
 		page.title  = _("Static Routes")
@@ -144,8 +144,8 @@ function index()
 		page = entry({"admin", "network", "diag_traceroute"}, post("diag_traceroute"), nil)
 		page.leaf = true
 
-		page = entry({"admin", "network", "diag_ping6"}, post("diag_ping6"), nil)
-		page.leaf = true
+		--page = entry({"admin", "network", "diag_ping6"}, post("diag_ping6"), nil)
+		--page.leaf = true
 
 		page = entry({"admin", "network", "diag_traceroute6"}, post("diag_traceroute6"), nil)
 		page.leaf = true
@@ -186,7 +186,7 @@ function wifi_add()
 	if dev then
 		local net = dev:add_wifinet({
 			mode       = "ap",
-			ssid       = "OpenWrt",
+			ssid       = "OPENWIFI",
 			encryption = "none"
 		})
 
